@@ -1,0 +1,38 @@
+body{
+    font-family: sans-serif;
+}
+.container{
+    display: flex;
+}
+.login-pic{
+    position: relative;
+    margin-top: 20px;
+}
+.login-pic img{
+    width: 85%;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-form input{
+    margin-top: 20px;
+}
+.email{
+    width: 250px;
+}
+.password{
+    width: 250px;
+}
+.text{
+    text-align: center;
+}
+.signup{
+    margin-top: 30px;
+    text-align: center;
+}
+.signup a{
+    text-decoration: none;
+}

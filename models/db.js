@@ -1,60 +1,73 @@
-var mysql=require('mysql');
+var mysql = require('mysql');
+
+var getConnection = function (callback) {
+	var connection = mysql.createConnection({
+		host: '127.0.0.1',
+		user: 'root',
+		password: '',
+		database: 'multi_client_website'
+	});
+
+	connection.connect(function (err) {
+		if (err) {
+			console.error('error connecting: ' + err.stack);
+			callback(null);
+		}
+		console.log('connected as id ' + connection.threadId);
+		callback(connection); 
+	});
+};
 
 
+module.exports = {
+	getResults: function (sql, params, callback) {
+		getConnection(function (connection) {
+			if (params != null) {
+				connection.query(sql, params, function (error, results) {
+					if (results.length != 0) {
+						callback(results);
+					} else {
+						callback([]);
+					}
+				});
+			} else {
+				connection.query(sql, function (error, results) {
+					if (results.length != 0) {
+						callback(results);
+					} else {
+						callback([]);
+					}
+				});
+			}
+			connection.end(function (err) {
+				console.log('connection end!');
+			});
+		});
+	},
+	execute: function (sql, params, callback) {
+		getConnection(function (connection) {
 
-function getConnection(callback){
-    var con=mysql.createConnection({
-        host	: 'localhost',
-        user	: 'root',
-        password: '',
-        database: 'mmulti_client_website'
-    });
+			if (params != null) {
+				connection.query(sql, params, function (error, status) {
+					if (status) {
+						callback(true);
+					} else {
+						callback(false);
+					}
+				});
+			} else {
+				connection.query(sql, function (error, status) {
+					if (status) {
+						callback(true);
+					} else {
+						callback(false);
+					}
+				});
+			}
+			connection.end(function (err) {
+				console.log('connection end!');
+			});
+		});
+	}
 
-    //asyncronous
-    con.connect(function(err) {
-        if (err) {
-            console.error('error connecting: ' + err.stack);
-            return;
-        }
-        console.log('connected as id ' + con.threadId);
-        callback(con);
-    });
-}
-
-
-module.exports={
-    getResults:function (sql, callback){
-        getConnection(function (con){
-            con.query(sql, function(error, results){
-                if(error){
-                    console.log(error.stack);
-                    callback([]);
-                }else{
-                    callback(results);
-                }
-            });
-            con.end(function(err){
-                console.log('connection end...');
-            });
-        });
-
-    },
-    execute: function (sql, callback){
-
-        getConnection(function(connection){
-            connection.query(sql, function(error, results){
-
-                if(error){
-                    console.log(error.stack);
-                    callback(false);
-                }else{
-                    callback(true);
-                }
-            });
-
-            connection.end(function(err){
-                console.log('connection end...');
-            });
-        });
-    }
-}
+};

@@ -1,0 +1,15 @@
+body{
+    font-family: sans-serif;
+    text-align: center;
+}
+.welcome{
+    display: flex;
+    align-items: center;
+}
+.welcome-pic img{
+    margin-top: 20px;
+    width: 90%;
+}
+.welcome-pic{
+    margin-right: 110px;
+}
