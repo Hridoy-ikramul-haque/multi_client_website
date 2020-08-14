@@ -1,11 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<title>Admin Page</title>
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css.min.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/jquery-ui.css">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+
+	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+
+	<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+
+	<link rel="stylesheet" href="/css/aos.css">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <h2>welcome admin</h2>
+	<div class="site-wrap">
+		<header class="site-navbar py-1" role="banner">
+
+			<div class="container">
+				<div class="row align-items-center">
+					<h2>Welcome back,<%= user.username%></h2>
+					<div class="col-10 col-md-8 d-none d-xl-block">
+						<nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
+							<ul class="site-menu-nav js-clone-nav mx-auto d-none d-lg-block">
+
+								<a class="mb-5 text-blue" href="/logout">Logout</a><br><br>
+								<a class="mb-5 text-blue" href="/admin/profile">Edit Profile</a><br>
+								<a class="mb-5 text-blue" href="/admin/addNewManager">Add New Manager</a><br>
+								<a class="mb-5 text-blue" href="/admin/view_Managers">Managers</a><br>
+								<a class="mb-5 text-blue" href="/admin/view_Customers">Customers</a><br>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<h2>Personal information</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Name:</td>
+					<td><%= user.name %> </td>
+				</tr>
+				<tr>
+					<td>UserName: </td>
+					<td><%= user.username %></td>
+				</tr>
+				<tr>
+					<td>Email: </td>
+					<td><%= user.email %></td>
+				</tr>
+				<tr>
+					<td>phone: </td>
+					<td> <%= user.phone %></td>
+				</tr>
+				<br>
+				<br>
+				<tr>
+					<td>Password: </td>
+					<td><%= user.password %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/js/jquery-ui.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/jquery.countdown.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/bootstrap-datepicker.min.js"></script>
+	<script src="/js/aos.js"></script>
+	<script src="/js/main.js"></script>
 </body>
+
 </html>

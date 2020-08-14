@@ -2,17 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var signupModel = require.main.require('./models/signup-model');
-const {
-	check,
-	validationResult
-} = require('express-validator');
-const {
-	matchedData,
-	sanitizeBody
-} = require('express-validator');
-var urlencodedParser = bodyParser.urlencoded({
-	extended: true
-});
+
 router.get('/', function (req, res) {
 	var user = {
 		fname: null,
@@ -26,42 +16,15 @@ router.get('/', function (req, res) {
 		password: null
 	};
 	var error = user;
-	res.render('login/signup', {
+	res.render('signup/index', {
 		user: user,
 		error: error
 	});
 });
 
-router.post('/', urlencodedParser, [
-	check('fname', 'First Name must be in upperCase').isUppercase(),
-	check('lname', 'Last Name must be in upperCase').isUppercase(),
-	check('uname', 'Last Name must be in lowerCase').isLowercase(),
-	check('email', 'Email must be in ex:somethin@example.com').isEmail(),
-	check('usertype', 'must select').not().isEmpty(),
-	check('phone', 'must be number').isInt(),
-	check('phone', 'Length must be 11').isLength({
-		min: 11,
-		max: 11
-	}),
-	check('nid', 'must be number').isInt(),
-	check('nid', 'Length must be 17').isLength({
-		min: 17,
-		max: 17
-	}),
-	check('password', 'password must be at least 8 chars long').isLength({
-		min: 8
-	}).custom((value, {
-		req,
-		loc,
-		path
-	}) => {
-		if (value !== req.body.cpassword) {
-			throw new Error("Passwords don't match");
-		} else {
-			return value;
-		}
-	}),
-], function (req, res) {
+router.post('/', function(req,res){
+	
+	
 	const error = validationResult(req);
 	var user = {
 		fname: req.body.fname,
@@ -77,7 +40,7 @@ router.post('/', urlencodedParser, [
 	if (error.isEmpty()) {
 		signupModel.insert(user, function (status) {
 			if (status) {
-				res.render('login/success');
+				res.render('signup/success');
 			} else {
 				res.render('signup/index', {
 					user: user,
@@ -93,6 +56,7 @@ router.post('/', urlencodedParser, [
 			error: error.mapped()
 		});
 	}
-
 });
+	
+
 module.exports = router;

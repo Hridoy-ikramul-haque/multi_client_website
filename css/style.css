@@ -1,15 +1,51 @@
 body{
-    font-family: sans-serif;
-    text-align: center;
+  text-align: center;
 }
 .welcome{
-    display: flex;
-    align-items: center;
+  display: flex;
 }
-.welcome-pic img{
-    margin-top: 20px;
-    width: 90%;
+.welcome img{
+  margin-top: 60px;
+  width: 80%;
 }
-.welcome-pic{
-    margin-right: 110px;
+.welcome-word{
+  margin-right: 50px;
+  margin-top: 12%;
+}
+.welcome-word button{
+  border: 1px solid skyblue;
+}
+.shop{
+  display: flex;
+}
+.shop img{
+  width: 50%;
+  margin-right: 100px;
+}
+.form button{
+  border: 1px solid skyblue;
+  margin-top: 20px;
+}
+.form input{
+  margin-top: 20px;
+}
+.form{
+  margin-left: 100px;
+}
+.form a{
+  margin-top: 20px;
+}
+
+.site-menu a{
+  border: 1px solid skyblue;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-right: 20%;
+  text-align: center;
+}
+.site-menu-nav{
+  display: flex;
+}
+.site-menu-nav a{
+  margin-left: 50px;
 }

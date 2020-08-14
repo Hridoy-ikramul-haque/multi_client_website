@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+</head>
+
+<body>
+    <h2>Search your prefered home here </h2>
+    <a href="/login">login</a> <br>
+    <a href="/signup">sign up</a><br>
+    <table border="1">
+        <tr>
+            <td>House Name</td>
+            <td>Division</td>
+            <td>Area</td>
+            <td>Address</td>
+            <td>Size</td>
+            <td>Description</td>
+            <td>Prize</td>
+        </tr>
+        <% for(var i=0; i < userlist.length; i++){ %>
+        <tr>
+            <td><%= userlist[i].housename %></td>
+            <td><%= userlist[i].division %></td>
+            <td><%= userlist[i].area %></td>
+            <td><%= userlist[i].address %></td>
+            <td><%= userlist[i].size %></td>
+            <td><%= userlist[i].description %></td>
+            <td><%= userlist[i].prize %></td>
+            <td>
+                <a href="/search/<%= userlist[i].houseid %>">View home </a>
+            </td>
+        </tr>
+        <%  } %>
+    </table>
+</body>
+
+</html>

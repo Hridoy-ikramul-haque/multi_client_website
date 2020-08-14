@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>sign up page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header class="header">
+		<nav class="navbar navbar-expand-lg navbar-light ">
+			<a class="navbar-brand" href="#">MedHome</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+			  <ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+				  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="/login">Sign In</a>
+				</li>
+			  </ul>
+			</div>
+		  </nav>
+	</header>
+	<div class="container">
+
+	
+	<div>
+		<h2>Create Account!</h2>
+	</div>
+	<div class="signup-form">
+		<form method="post">
+
+
+			<input type="text" name="fname" value="<%= user.fname %>" required placeholder="First Name">
+			<% if(error.fname!= null){ %>
+			<p><%= error.fname.msg %></p>
+			<% } %>
+	
+			<input type="text" name="lname" value="<%= user.lname %>" required placeholder="Last Name">
+			<% if(error.lname!= null){ %>
+			<p><%= error.lname.msg %></p>
+			<% } %>
+
+			<select name="usertype">
+						<option value="">select</option>
+						<option value="Customer">Customer</option>
+					</select>
+				<% if(error.usertype!= null){ %>
+				<p><%= error.usertype.msg %></p>
+				<% } %>
+
+				<input type="text" name="fathersName" value="<%= user.fathersName %>" required placeholder="Father's Name">
+				<% if(error.fathersName!= null){ %>
+				<p><%= error.fathersName.msg %></p>
+				<% } %>
+
+			<input type="text" name="uname" value="<%= user.uname %>" required placeholder="Username">
+			<% if(error.uname!= null){ %>
+			<p><%= error.uname.msg %></p>
+			<% } %>
+
+			<input type="text" name="nid" value="<%= user.nid %>" required placeholder="NID">
+			<% if(error.nid!= null){ %>
+			<p><%= error.nid.msg %></p>
+			<% } %>
+
+			 <input type="text" name="email" value="<%= user.email %>" required placeholder="Email">
+			<% if(error.email!= null){ %>
+			<p><%= error.email.msg %></p>
+			<% } %>
+
+			
+			<input type="text" name="phone" value="<%= user.phone %>" required placeholder="Contact Number">
+			<% if(error.phone!= null){ %>
+			<p><%= error.phone.msg %></p>
+			<% } %>
+
+			<input type="password" name="password" value="<%= user.password %>" required placeholder="Password">
+			<% if(error.password!= null){ %>
+			<p><%= error.password.msg %></p>
+			<% } %>
+
+			<input type="password" name="cpassword" value="<%= user.cpassword %>" required placeholder="Re-type Password">
+			<% if(error.cpassword!= null){ %>
+			<p><%= error.cpassword.msg %></p>
+			<% } %>
+		
+	        <input class="button"type="submit" name="" value="Submit">
+</form>
+	</div>
+</div>
+	<a href="/login">Already have account? Login!</a>
+</body>
+
+</html>

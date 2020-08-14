@@ -1,48 +1,42 @@
 //declaration
 var express = require('express');
 var login = require('./controllers/login');
-
 var logout = require('./controllers/logout');
 var signup = require('./controllers/signup');
-var admin = require('./controllers/admin');
-
-var expressSession = require('express-session');
-
-
+var admin = require('./controllers/admin/admin');
+var manager = require('./controllers/manager/manager');
+var customer = require('./controllers/customer/customer');
 var ejs = require('ejs');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
-
-
+var cookieParser = require('cookie-parser');
 //configuration
 app.set('view engine', 'ejs');
-app.use('/css', express.static('css'));
-
-app.use('/img', express.static('img'));
 
 
 //middleware 
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-
-app.use(expressSession({secret: 'my secret value', saveUninitialized:true, resave: false}));
 app.use(cookieParser());
 
 //app.use(bodyParser());
-
+app.use('/css', express.static('css'));
+app.use('/fonts', express.static('fonts'));
+app.use('/img', express.static('img'));
+app.use('/js', express.static('js'));
+app.use('/scss', express.static('scss'));
 app.use('/login', login);
 app.use('/signup', signup);
-app.use('/home', login);
 app.use('/admin', admin);
-
-//app.use('/logout', logout);
+app.use('/manager', manager);
+app.use('/customer', customer);
+app.use('/logout', logout);
 
 
 //routes
 app.get('/', function (req, res) {
-	res.render('index');
+	res.render('welcome/index');
 });
 
 //server startup
