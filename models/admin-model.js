@@ -64,16 +64,7 @@ module.exports = {
 			}
 		});
 	},
-	getAllOwners: function (callback) {
-		var sql = "select * from houseownerinfo";
-		db.getResults(sql, [], function (results) {
-			if (results.length > 0) {
-				callback(results);
-			} else {
-				callback([]);
-			}
-		});
-	},
+	
 	getAllCustomers: function (callback) {
 		var sql = "select * from customerinfo";
 		db.getResults(sql, [], function (results) {
@@ -105,16 +96,7 @@ module.exports = {
 			}
 		});
 	},
-	getOwnersProfile: function (username, callback) {
-		var sql = "select * from houseownerinfo where username=?";
-		db.getResults(sql, username, function (results) {
-			if (results.length > 0) {
-				callback(results[0]);
-			} else {
-				callback(null);
-			}
-		});
-	},
+	
 	getAllPendingCustomer: function (callback) {
 		var sql = "select * from customerinfo where type=?";
 		db.getResults(sql, ['pending'], function (results) {
@@ -125,26 +107,8 @@ module.exports = {
 			}
 		});
 	},
-	getAllPendingHouseowner: function (callback) {
-		var sql = "select * from houseownerinfo where type=?";
-		db.getResults(sql, ['pending'], function (results) {
-			if (results.length > 0) {
-				callback(results);
-			} else {
-				callback([]);
-			}
-		});
-	},
-	getAllAvailableHouseowner: function (callback) {
-		var sql = "select * from houseownerinfo where type=?";
-		db.getResults(sql, ['available'], function (results) {
-			if (results.length > 0) {
-				callback(results);
-			} else {
-				callback([]);
-			}
-		});
-	},
+	
+	
 	getAllAvailableCustomer: function (callback) {
 		var sql = "select * from customerinfo where type=?";
 		db.getResults(sql, ['available'], function (results) {
@@ -155,38 +119,9 @@ module.exports = {
 			}
 		});
 	},
-	getAllAvailableHouse: function (callback) {
-		var sql = "select * from houseinfo where status=?";
-		db.getResults(sql, ['available'], function (results) {
-			console.log("caught");
-			if (results.length > 0) {
-				callback(results);
-			} else {
-				callback([]);
-			}
-		});
-	},
-	getAllRentedHouse: function (callback) {
-		var sql = "select * from houseinfo where status=?";
-		db.getResults(sql, ['rented'], function (results) {
-			if (results.length > 0) {
-				console.log(results);
-				callback(results);
-			} else {
-				callback([]);
-			}
-		});
-	},
-	houseOwnersStatus: function (user, callback) {
-		var sql = "update houseownerinfo set status=? where username=?";
-		db.execute(sql, [user.status, user.username], function (status) {
-			if (status) {
-				callback(true);
-			} else {
-				callback(false);
-			}
-		});
-	},
+
+	
+	
         customerStatus: function (user, callback) {
 		var sql = "update customerinfo set status=? where username=?";
 		db.execute(sql, [user.status, user.username], function (status) {
