@@ -11,16 +11,8 @@ module.exports = {
 			}
 		});
 	},
-	getOwnersProfile: function (username, callback) {
-		var sql = "select * from houseownerinfo where username=?";
-		db.getResults(sql, username, function (results) {
-			if (results.length > 0) {
-				callback(results[0]);
-			} else {
-				callback(null);
-			}
-		});
-	},
+	
+	
 	getAllPendingCustomer: function (callback) {
 		var sql = "select * from customerinfo where type=?";
 		db.getResults(sql, ['pending'], function (results) {
