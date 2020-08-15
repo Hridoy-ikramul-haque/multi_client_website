@@ -56,18 +56,7 @@ module.exports = {
 			}
 		});
 	},
-	passrecovery: function (user, callback) {
 
-		console.log(user)
-		var sql = "update managerinfo set password=?  where username=? ";
-		db.getResults(sql, [user.password, user.username], function (status) {
-			if (status) {
-				callback(true);
-			} else {
-				callback(false);
-			}
-		});
-	},
 	getByUname: function (username, callback) {
 		var sql = "select * from managerinfo where username=?";
 		db.getResults(sql, [username], function (results) {
@@ -123,14 +112,5 @@ module.exports = {
 			}
 		});
 	},
-	recover: function (user, callback) {
-		var sql = "select * from managerinfo where username=? and fathersName=?";
-		db.getResults(sql, [user.username, user.fathersName], function (results) {
-			if (results.length > 0) {
-				callback(results);
-			} else {
-				callback(null);
-			}
-		});
-	},
+	
 }
